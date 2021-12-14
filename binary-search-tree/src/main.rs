@@ -16,12 +16,12 @@ impl<T: Eq + Ord> BSTNode<T> {
         }
     }
 
-    pub fn search(self, needle: T) -> bool {
-        match (needle.cmp(&self.value), self.right, self.left) {
-            (Ordering::Equal, _, _) => true,
-            (Ordering::Greater, Some(r), _) => r.search(needle),
-            (Ordering::Less, _, Some(l)) => l.search(needle),
-            _ => false,
+    pub fn lookup<'a>(&'a self, needle: T) -> Option<&'a Self> {
+        match (needle.cmp(&self.value), &self.right, &self.left) {
+            (Ordering::Equal, _, _) => Some(&self),
+            (Ordering::Greater, Some(r), _) => r.lookup(needle),
+            (Ordering::Less, _, Some(l)) => l.lookup(needle),
+            _ => None,
         }
     }
 
@@ -34,27 +34,18 @@ impl<T: Eq + Ord> BSTNode<T> {
             (Ordering::Less, _, None) => self.left = Some(Box::new(BSTNode::new(needle))),
         };
     }
-
-    pub fn delete(self, _t: T) {
-        // code
-    }
 }
 
 fn main() {
-    let mut node = BSTNode::new(123);
-    node.insert(1);
-    node.insert(2);
+    let mut node = BSTNode::new(8);
     node.insert(3);
-    node.insert(4);
-    node.insert(5);
-    node.insert(6);
-    node.insert(7);
-    node.insert(8);
-    node.insert(9);
     node.insert(10);
-    node.insert(11);
-    node.insert(12);
-    node.insert(13333);
+    node.insert(1);
+    node.insert(6);
+    node.insert(14);
+    node.insert(4);
+    node.insert(7);
+    node.insert(13);
 
-    println!("{:?}", node);
+    println!("{:?}", node.lookup(13));
 }
