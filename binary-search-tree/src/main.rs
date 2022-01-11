@@ -34,18 +34,24 @@ impl<T: Eq + Ord> BSTNode<T> {
             (Ordering::Less, _, None) => self.left = Some(Box::new(BSTNode::new(needle))),
         };
     }
+
+    #[allow(dead_code)]
+    fn maximum(&self, node: Self) -> &Self {
+        match node.right {
+            Some(n) => self.maximum(*n),
+            _ => self,
+        }
+    }
+
+    #[allow(dead_code)]
+    fn minimum(&self, node: Self) -> &Self {
+        match node.left {
+            Some(n) => self.maximum(*n),
+            _ => self,
+        }
+    }
 }
 
 fn main() {
-    let mut node = BSTNode::new(8);
-    node.insert(3);
-    node.insert(10);
-    node.insert(1);
-    node.insert(6);
-    node.insert(14);
-    node.insert(4);
-    node.insert(7);
-    node.insert(13);
-
-    println!("{:?}", node.lookup(13));
+    //
 }
