@@ -2,6 +2,7 @@ use std::vec;
 
 pub type Graph = Vec<(i32, i32)>;
 
+// recursively visit all the vertices possible
 fn dfs(root: i32, graph: &Graph, discovered: &mut Vec<i32>) {
     discovered.push(root);
 
@@ -12,6 +13,7 @@ fn dfs(root: i32, graph: &Graph, discovered: &mut Vec<i32>) {
     }
 }
 
+// find adjacent vertices of a root
 fn adjacent(root: i32, graph: &Graph) -> Vec<i32> {
     let mut adj = vec![];
 
@@ -26,6 +28,7 @@ fn adjacent(root: i32, graph: &Graph) -> Vec<i32> {
     adj
 }
 
+// public interface
 pub fn traverse(root: i32, graph: Graph) -> Vec<i32> {
     let mut discovered: Vec<i32> = vec![];
     dfs(root, &graph, &mut discovered);
