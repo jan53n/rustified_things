@@ -1,6 +1,6 @@
 use std::fmt::Debug;
 
-pub fn mergesort<T: Ord + Copy + Debug>(mut _input: Vec<T>) -> Vec<T> {
+pub fn mergesort<T: Ord + Copy>(mut _input: Vec<T>) -> Vec<T> {
     let len = _input.len();
     let mid = (_input.len().wrapping_sub(1) / 2) + 1;
 
@@ -14,7 +14,7 @@ pub fn mergesort<T: Ord + Copy + Debug>(mut _input: Vec<T>) -> Vec<T> {
 }
 
 /// Was too tired :D
-fn merge<T: Ord + Copy + Debug>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
+fn merge<T: Ord + Copy>(a: Vec<T>, b: Vec<T>) -> Vec<T> {
     let mut result = vec![];
     result.append(&mut a.to_vec());
     result.append(&mut b.to_vec());
