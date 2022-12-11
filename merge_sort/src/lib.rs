@@ -1,5 +1,3 @@
-use std::fmt::Debug;
-
 pub fn mergesort<T: Ord + Copy>(mut _input: Vec<T>) -> Vec<T> {
     let len = _input.len();
     let mid = (_input.len().wrapping_sub(1) / 2) + 1;
