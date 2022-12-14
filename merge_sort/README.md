@@ -1,6 +1,7 @@
 
 ## Simple case call stack
 
+```
 [
     mergesort: [2, 1]
     
@@ -25,6 +26,7 @@
         ]
     ]
 ]
+```
 
 ## References
 * https://en.wikipedia.org/wiki/Merge_sort
