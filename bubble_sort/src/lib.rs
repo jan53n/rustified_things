@@ -10,7 +10,7 @@ pub fn sort<T: Ord + Clone>(input: &mut Vec<T>) -> &Vec<T> {
         }
     }
 
-    if swapped {
+    if !swapped {
         return input;
     } else {
         return sort(input);
