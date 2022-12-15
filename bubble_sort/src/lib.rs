@@ -1,16 +1,16 @@
 pub fn sort<T: Ord + Clone>(input: &mut Vec<T>) -> &Vec<T> {
-    let mut count = 0;
+    let mut swapped = false;
 
     for a in 0..(input.len() - 1) {
         let b = a + 1;
 
         if &input[a] > &input[b] {
             input.swap(a, b);
-            count += 1;
+            swapped = true;
         }
     }
 
-    if count > 0 {
+    if swapped {
         return input;
     } else {
         return sort(input);
